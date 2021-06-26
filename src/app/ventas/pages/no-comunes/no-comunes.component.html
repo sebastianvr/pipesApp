@@ -6,16 +6,93 @@
 </div>
 
 <div class="p-grid">
-    <div class="p-col p-md-6"> 
+    <div class="p-col p-md-6">
         <p-fieldset legend="i18nSelect Pipe" [toggleable]="true">
-            Saludos {{ nombre }} es un placer 
-            {{ genero | i18nSelect: invitacionMapa}} a nuestra pagina
+            <p>
+                Saludos {{ nombre }} es un placer
+                {{ genero | i18nSelect: invitacionMapa}} a nuestra pagina
+            </p>
+            <button pButton pRipple type="button" label="Cambiar Cliente" class="p-button-outlined p-button-help"
+                (click)="cambiarCliente()">
+            </button>
+        </p-fieldset>
+    </div>
+    <div class="p-col p-md-6">
+        <p-fieldset legend="i18nPlural Pipe" [toggleable]="true">
+            <p>
+                Actualmente {{lista.length | i18nPlural : listaMapa}}
+            </p>
+            <button pButton pRipple type="button" label="Borrar Cliente" class="p-button-outlined p-button-danger"
+                (click)="borrarCliente()">
+            </button>
 
         </p-fieldset>
     </div>
-    <div class="p-col p-md-6"> 
-        <p-fieldset legend="i18nPlural Pipe" [toggleable]="true">
-            Content
+
+    <div class="p-col p-md-6">
+        <p-fieldset legend="Slice Pipe Hard Code" [toggleable]="true">
+            <ul>
+                <li>
+                    'sebastian' | slice:0:2
+                </li>
+                <li>
+                    lista | slice:0:3
+                </li>
+                <li>
+                    lista | slice:2:4
+                </li>
+            </ul>
+
+        </p-fieldset>
+    </div>
+    <div class="p-col p-md-6">
+        <p-fieldset legend="Slice Pipe" [toggleable]="true">
+            <ul>
+                <li>
+                    {{'sebastian' | slice:0:2}}
+                </li>
+                <li>
+                    {{lista | slice:0:3 }}
+                </li>
+                <li>
+                    {{lista | slice:2:4 }}
+                </li>
+            </ul>
+
+
+
+        </p-fieldset>
+    </div>
+
+    <div class="p-col p-md-6">
+        <p-fieldset legend="keyvalue Pipe" [toggleable]="true">
+            <ul>
+                <li *ngFor="let item of objeto | keyvalue">
+                    <b>{{item.key | titlecase}} : </b> {{item.value}}
+                </li>
+            </ul>
+        </p-fieldset>
+    </div>
+
+    <div class="p-col p-md-6">
+        <p-fieldset legend="json Pipe" [toggleable]="true">
+            <ul>
+                <pre>{{heroes | json}}</pre>
+
+            </ul>
+        </p-fieldset>
+    </div>
+
+    <div class="p-col p-md-6">
+        <p-fieldset legend="async Pipe" [toggleable]="true">
+            <pre>
+                    {{miObservable | async}}
+                </pre>
+
+            <hr>
+
+            <pre *ngIf="!(miPromesa | async)">Resolviendo Promesa</pre>
+            <pre> {{miPromesa | async}}</pre>
         </p-fieldset>
     </div>
 </div>

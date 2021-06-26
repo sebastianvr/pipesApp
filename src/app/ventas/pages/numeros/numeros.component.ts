@@ -9,8 +9,8 @@ import { Component } from '@angular/core';
 export class NumerosComponent{
 
   //El pipe number redondea a tres decimales
-  ventasNetas : number = 18761584.4345;
-  porcentaje : number = 0.5734;
+  ventasNetas : number = 18761584.4355;
+  porcentaje : number = 0.5754;
 
 
 }
